@@ -1,3 +1,9 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<h2 id='title'>ember-inline-svg</h2>
 
-{{outlet}}
+<div class="kiwi-image-at-root">
+  {{inline-svg "kiwi" }}
+</div>
+
+<div class="kiwi-image-in-directory">
+  {{inline-svg "foo/kiwi" class="with-a-class"}}
+</div>

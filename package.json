@@ -1,6 +1,7 @@
 {
   "name": "ember-inline-svg",
-  "version": "0.0.0",
+  "description": "Ember CLI addon to render SVG images inline",
+  "version": "0.0.1",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,11 +11,14 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "https://github.com/stefanpenner/ember-cli",
+  "repository": "https://github.com/minutebase/ember-inline-svg",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": {
+    "name": "Richard Livsey",
+    "email": "richard@minutebase.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.2.0",
@@ -31,9 +35,15 @@
     "glob": "^4.0.5"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "svg"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "dependencies": {
+    "broccoli-merge-trees": "^0.2.1",
+    "broccoli-spelunk": "^0.1.2",
+    "broccoli-static-compiler": "^0.2.1"
   }
 }
