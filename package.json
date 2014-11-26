@@ -42,8 +42,15 @@
     "configPath": "tests/dummy/config"
   },
   "dependencies": {
+    "broccoli-caching-writer": "^0.5.2",
     "broccoli-merge-trees": "^0.2.1",
     "broccoli-spelunk": "^0.1.2",
-    "broccoli-static-compiler": "^0.2.1"
+    "broccoli-static-compiler": "^0.2.1",
+    "merge": "^1.2.0",
+    "mkdirp": "^0.5.0",
+    "promise-map-series": "^0.2.0",
+    "rsvp": "^3.0.14",
+    "svgo": "^0.5.0",
+    "walk-sync": "^0.1.3"
   }
 }

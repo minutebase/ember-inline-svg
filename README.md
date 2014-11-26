@@ -18,15 +18,45 @@ You can specify a class for the element like so:
 
 ## Configuring
 
+### SVG Paths
+
 By default the addon expects to find your SVG images at `/public/images/`, but you can change this
-by setting the `svgPaths` option in your application's Brocfile.js
+by setting the `svg.paths` option in your application's Brocfile.js
 
 ```javascript
 var app = new EmberApp({
-  svgPaths: [
-    'public/images',
-    'app/svgs'
-  ]
+  svg: {
+    paths: [
+      'public/images',
+      'app/svgs'
+    ]
+  }
+});
+```
+
+### Optimizing
+
+SVGs are optimized by [svgo](https://github.com/svg/svgo) by default.
+
+You can configure this by setting the `svg.optimize` options:
+
+```javascript
+var app = new EmberApp({
+  svg: {
+    optimize: {
+      removeDoctype: false
+    }
+  }
+});
+```
+
+Alternatively, you can disable it completely by setting this to false:
+
+```javascript
+var app = new EmberApp({
+  svg: {
+    optimize: false
+  }
 });
 ```
 
