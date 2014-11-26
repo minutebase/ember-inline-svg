@@ -44,7 +44,11 @@ You can configure this by setting the `svg.optimize` options:
 var app = new EmberApp({
   svg: {
     optimize: {
-      removeDoctype: false
+      plugins: [
+        { removeDoctype: false },
+        { removeTitle: true },
+        { removeDesc: true }
+      ]
     }
   }
 });
