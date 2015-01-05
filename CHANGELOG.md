@@ -2,6 +2,8 @@
 
 ## Master
 
+## v0.0.3
+
 * Update Ember CLI to 0.1.5
 
 ## v0.0.2
