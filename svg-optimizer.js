@@ -29,6 +29,12 @@ module.exports = CachingWriter.extend({
 
           return new RSVP.Promise(function(resolve, reject) {
             svgo.optimize(rawSVG, function(result) {
+              if (result.error) {
+                var error = new Error(result.error);
+                error.file = relativePath;
+                return reject(error);
+              }
+
               fs.writeFileSync(destPath, result.data, { encoding: 'utf8'});
               resolve();
             });

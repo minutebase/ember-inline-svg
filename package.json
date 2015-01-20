@@ -45,7 +45,7 @@
   "dependencies": {
     "broccoli-caching-writer": "^0.5.2",
     "broccoli-merge-trees": "^0.2.1",
-    "broccoli-spelunk": "^0.1.2",
+    "broccoli-flatiron": "^0.0.0",
     "broccoli-static-compiler": "^0.2.1",
     "merge": "^1.2.0",
     "mkdirp": "^0.5.0",
