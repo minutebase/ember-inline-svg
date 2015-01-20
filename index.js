@@ -13,14 +13,14 @@ module.exports = {
 
   options: function() {
     return merge(true, {}, {
-      paths:   ['public/images'],
+      paths:   ['public'],
       optimize: { /* svgo defaults */ }
     }, this.app.options.svg || {});
   },
 
   svgPaths: function() {
     if (this.isDevelopingAddon()) {
-      return ['tests/dummy/public/images'];
+      return ['tests/dummy/public'];
     }
     return this.options().paths;
   },
