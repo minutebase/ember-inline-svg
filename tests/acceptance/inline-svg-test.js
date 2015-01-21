@@ -35,3 +35,11 @@ test('adds class to SVG', function() {
     ok(find(".kiwi-image-in-directory svg.with-a-class").length, "has added the class");
   });
 });
+
+test('trims unnecessary .svg` extension', function() {
+  visit('/');
+
+  andThen(function() {
+    ok(find(".kiwi-image-with-extension svg").length, "has an SVG");
+  });
+});
