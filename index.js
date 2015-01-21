@@ -1,12 +1,12 @@
 /* jshint node: true */
 'use strict';
 
-var fs            = require('fs');
-var merge         = require('merge')
-var mergeTrees    = require('broccoli-merge-trees');
-var flattenFolder = require('broccoli-spelunk');
-var pickFiles     = require('broccoli-static-compiler');
-var SVGOptmizer   = require('./svg-optimizer');
+var fs          = require('fs');
+var merge       = require('merge')
+var mergeTrees  = require('broccoli-merge-trees');
+var flatiron    = require('broccoli-flatiron');
+var Funnel      = require('broccoli-funnel');
+var SVGOptmizer = require('./svg-optimizer');
 
 module.exports = {
   name: 'ember-inline-svg',
@@ -39,18 +39,15 @@ module.exports = {
       return fs.existsSync(path);
     }));
 
-    svgs = pickFiles(svgs, {
-      srcDir: '/',
-      files: ['**/*.svg'],
-      destDir: '/'
+    svgs = new Funnel(svgs, {
+      include: [new RegExp(/\.svg$/)]
     });
 
     svgs = this.optimizeSVGs(svgs);
 
-    svgs = flattenFolder(svgs, {
+    svgs = flatiron(svgs, {
       outputFile: 'svgs.js',
-      mode: 'es6',
-      keepExtensions: false
+      trimExtensions: true
     });
 
     return this.mergeTrees([tree, svgs]);
