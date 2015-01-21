@@ -6,6 +6,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route("root");
+  this.route("subdirectory");
+  this.route("class");
+  this.route("extension");
 });
 
 export default Router;

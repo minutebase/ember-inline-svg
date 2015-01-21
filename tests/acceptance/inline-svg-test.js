@@ -13,7 +13,7 @@ module('Acceptance: InlineSvg', {
 });
 
 test('displays SVG at root', function() {
-  visit('/');
+  visit('/root');
 
   andThen(function() {
     ok(find(".kiwi-image-at-root svg").length, "has an SVG");
@@ -21,7 +21,7 @@ test('displays SVG at root', function() {
 });
 
 test('displays SVG in subdirectory', function() {
-  visit('/');
+  visit('/subdirectory');
 
   andThen(function() {
     ok(find(".kiwi-image-in-directory svg").length, "has an SVG which is in a directory");
@@ -29,17 +29,17 @@ test('displays SVG in subdirectory', function() {
 });
 
 test('adds class to SVG', function() {
-  visit('/');
+  visit('/class');
 
   andThen(function() {
-    ok(find(".kiwi-image-in-directory svg.with-a-class").length, "has added the class");
+    ok(find(".kiwi-image-with-a-class svg.with-a-class").length, "has added the class");
   });
 });
 
 test('trims unnecessary .svg` extension', function() {
-  visit('/');
+  visit('/extension');
 
   andThen(function() {
-    ok(find(".kiwi-image-with-extension svg").length, "has an SVG");
+    ok(find(".kiwi-image-with-extension svg").length, "has an SVG, extension was trimmed");
   });
 });
