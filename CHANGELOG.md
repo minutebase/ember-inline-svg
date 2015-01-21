@@ -2,7 +2,7 @@
 
 ## Master
 
-## v0.0.4
+## v0.1.0
 
 * #5 The path to an image can now optionally have a `.svg` extension.
 * #6 The default source directory changed from `./public/images` to `./public`.
