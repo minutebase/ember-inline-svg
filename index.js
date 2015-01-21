@@ -5,7 +5,7 @@ var fs          = require('fs');
 var merge       = require('merge')
 var mergeTrees  = require('broccoli-merge-trees');
 var flatiron    = require('broccoli-flatiron');
-var pickFiles   = require('broccoli-static-compiler');
+var Funnel      = require('broccoli-funnel');
 var SVGOptmizer = require('./svg-optimizer');
 
 module.exports = {
@@ -39,10 +39,8 @@ module.exports = {
       return fs.existsSync(path);
     }));
 
-    svgs = pickFiles(svgs, {
-      srcDir: '/',
-      files: ['**/*.svg'],
-      destDir: '/'
+    svgs = new Funnel(svgs, {
+      include: [new RegExp(/\.svg$/)]
     });
 
     svgs = this.optimizeSVGs(svgs);
