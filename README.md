@@ -8,7 +8,7 @@ Displays SVG images inline.
 {{inline-svg "path/to/file"}}
 ```
 
-This will display the SVG found at `/public/images/path/to/file.svg` (see below on how to change this).
+This will display the SVG found at `/public/path/to/file.svg` (see below on how to change this).
 
 You can specify a class for the element like so:
 
@@ -20,8 +20,8 @@ You can specify a class for the element like so:
 
 ### SVG Paths
 
-By default the addon expects to find your SVG images at `/public/images/`, but you can change this
-by setting the `svg.paths` option in your application's Brocfile.js
+By default the addon expects to find your SVG images at `/public/`, but you can change this
+by setting the `svg.paths` option in your application's Brocfile.js like so:
 
 ```javascript
 var app = new EmberApp({
