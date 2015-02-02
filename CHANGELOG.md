@@ -2,6 +2,10 @@
 
 ## Master
 
+## v0.1.1
+
+* Doc only change - Updated README
+
 ## v0.1.0
 
 * #5 The path to an image can now optionally have a `.svg` extension.

@@ -1,7 +1,7 @@
 {
   "name": "ember-inline-svg",
   "description": "Ember CLI addon to render SVG images inline",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "directories": {
     "doc": "doc",
     "test": "tests"
