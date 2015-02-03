@@ -64,6 +64,8 @@ var app = new EmberApp({
 });
 ```
 
+## Troubleshooting
+
 ## Developing
 
 ### Installation
