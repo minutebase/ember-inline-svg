@@ -50,6 +50,6 @@ module.exports = {
       trimExtensions: true
     });
 
-    return this.mergeTrees([tree, svgs]);
+    return mergeTrees([tree, svgs]);
   }
 };
