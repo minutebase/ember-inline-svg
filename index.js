@@ -2,7 +2,7 @@
 'use strict';
 
 var fs          = require('fs');
-var merge       = require('merge')
+var merge       = require('merge');
 var mergeTrees  = require('broccoli-merge-trees');
 var flatiron    = require('broccoli-flatiron');
 var Funnel      = require('broccoli-funnel');
