@@ -77,7 +77,7 @@ You can easily run into this when using SVG fonts. By default `ember-inline-svg`
 
 A quick and easy fix is changing the [`svg.paths` option](#svg-paths) in the configuration. Just explicitly list all directories with images that you want processed by `ember-inline-svg`.
 
-If the longer build time is not caused by SVG fonts, but by actual SVG images that you actually need, you can [turn of the optimization](#optimization]) as a whole or individual plugins to remove or diminish another time-consuming build step.
+If the longer build time is not caused by SVG fonts, but by actual SVG images that you actually need, you can [turn off the optimization](#optimization]) as a whole or individual plugins to remove or diminish another time-consuming build step.
 
 Currently the caching does not work as expected. The bug is tracked in [issue #15](https://github.com/minutebase/ember-inline-svg/issues/15). We are positive, that fixing this bug will speed up the builds.
 
