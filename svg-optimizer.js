@@ -1,3 +1,5 @@
+/* jshint node: true */
+
 var CachingWriter = require('broccoli-caching-writer');
 var mapSeries     = require('promise-map-series');
 var walkSync      = require('walk-sync');
@@ -18,7 +20,7 @@ module.exports = CachingWriter.extend({
 
       return mapSeries(paths, function(relativePath) {
         if (/\/$/.test(relativePath)) {
-          mkdirp.sync(destDir + '/' + relativePath)
+          mkdirp.sync(destDir + '/' + relativePath);
           return;
         }
 
