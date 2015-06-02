@@ -2,6 +2,11 @@
 
 ## Master
 
+## v0.1.3
+
+* Update Ember CLI to 0.2.6
+* Update SVGO to ^0.5.2
+
 ## v0.1.2
 
 * Update Ember CLI to 0.2.3
