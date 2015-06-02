@@ -2,6 +2,11 @@
 
 ## Master
 
+## v0.1.2
+
+* Update Ember CLI to 0.2.3
+* Doc tweaks
+
 ## v0.1.1
 
 * Doc only change - Updated README
