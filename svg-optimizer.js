@@ -12,7 +12,6 @@ var fs            = require('fs');
 // TODO - extract this to its own broccoli plugin
 module.exports = CachingWriter.extend({
   updateCache: function(srcDirs, destDir) {
-    var self = this;
     var svgo = new SVGO(this.svgoConfig);
 
     return mapSeries(srcDirs, function(srcDir) {
