@@ -2,6 +2,9 @@
 
 ## Master
 
+* Support latest Ember without deprecations
+* Update SVGO to ^0.5.6 & document custom plugins
+
 ## v0.1.3
 
 * Update Ember CLI to 0.2.6
