@@ -64,6 +64,37 @@ var app = new EmberApp({
 });
 ```
 
+### Custom Plugins
+
+SVGO [now supports](https://github.com/svg/svgo/commit/1ec50c4a13ecea4c50619cdb3bab4926f6aa53e1) custom plugins.
+
+See [SVGO's plugins](https://github.com/svg/svgo/tree/master/plugins) for examples on what you can do.
+
+Eg, here's how you could strip IDs from all elements:
+
+```javascript
+var app = new EmberApp({
+  svg: {
+    optimize: {
+      plugins: [
+        {
+          myCustomPlugin: {
+            type: "perItem",
+            fn: function(item) {
+              item.eachAttr(function(attr) {
+                if (attr.name === 'id') {
+                  item.removeAttr('id')
+                }
+              });
+            }
+          }
+        }
+      ]
+    }
+  }
+});
+```
+
 ## Troubleshooting
 
 ##### Atrociously slow build times >:[
