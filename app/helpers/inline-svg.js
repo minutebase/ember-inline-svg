@@ -14,13 +14,23 @@ export function inlineSvg(path, options) {
   if (typeof svg === "undefined" && /\.svg$/.test(path)) {
     svg = Ember.get(SVGs, jsonPath.slice(0, -4));
   }
-  
+
   Ember.assert("No SVG found for "+path, svg);
 
-  var hash  = options.hash || {};
-  svg = applyClass(svg, hash.class);
+  svg = applyClass(svg, options.class);
 
   return new Ember.Handlebars.SafeString(svg);
 }
 
-export default Ember.Handlebars.makeBoundHelper(inlineSvg);
+let helper;
+if (Ember.Helper && Ember.Helper.helper) {
+  helper = Ember.Helper.helper(function([path], options) {
+    return inlineSvg(path, options);
+  });
+} else {
+  helper = Ember.Handlebars.makeBoundHelper(function(path, options) {
+    return inlineSvg(path, options.hash || {});
+  });
+}
+
+export default helper;
