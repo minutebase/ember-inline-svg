@@ -10,19 +10,19 @@ var SVGOptmizer = require('./svg-optimizer');
 
 module.exports = {
   name: 'ember-inline-svg',
-  
+
   included: function(app) {
     if (app.app) {
       app = app.app;
     }
     this.app = app;
   },
-  
+
   options: function() {
     return merge(true, {}, {
       paths:   ['public'],
       optimize: { /* svgo defaults */ }
-    }, this.app.options.svg || {});
+    }, (this.app && this.app.options && this.app.options.svg) || {});
   },
 
   svgPaths: function() {
