@@ -1,17 +1,7 @@
-import Ember from 'ember';
-import {module, test} from 'qunit';
-import startApp from '../helpers/start-app';
+import moduleForAcceptance from '../helpers/module-for-acceptance';
+import {test} from 'qunit';
 
-var App;
-
-module('Acceptance: InlineSvg', {
-  beforeEach: function() {
-    App = startApp();
-  },
-  afterEach: function() {
-    Ember.run(App, 'destroy');
-  }
-});
+moduleForAcceptance('Acceptance | InlineSvg');
 
 test('displays SVG at root', function(assert) {
   visit('/root');
