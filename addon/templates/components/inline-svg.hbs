@@ -1,0 +1,10 @@
+<svg class={{class}} aria-labelledby="{{describedBy}}" role="{{role}}">
+  {{#if title}}
+    <title class="title">{{title}}</title>
+  {{/if}}
+  {{#if desc}}
+    <desc class="desc">{{desc}}</desc>
+  {{/if}}
+  {{svg}}
+  {{yield}}
+</svg>
