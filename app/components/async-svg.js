@@ -1,0 +1,1 @@
+export { default } from 'ember-inline-svg/components/async-svg';

@@ -1,18 +1,19 @@
 import Ember from 'ember';
-import layout from '../templates/components/inline-svg';
+import layout from '../templates/components/svg';
 import SVGs from '../inline-svg/resource';
 const htmlSafe = Ember.String.htmlSafe;
 
 const inline = Ember.Component.extend({
   layout: layout,
   tagName: '',
-  svg: Ember.computed('src', function() {
+  _svg: Ember.computed('src', function() {
     const src = this.get('src') || '';
     const path = src.replace(/\.svg$/, '').replace(/\//g, '.');
     const svg = Ember.get(SVGs, path);
 
     Ember.assert(`No SVG found for ${path}`, svg);
 
+    this.set('svg', htmlSafe(svg));
     return htmlSafe(svg);
   }),
   labelledBy: Ember.computed('title', 'desc', function() {
