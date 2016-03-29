@@ -41,29 +41,47 @@ module.exports = {
     return new SVGOptmizer(tree, {svgoConfig: config});
   },
 
-  treeForPublic: function() {
-    const trees = [];
-    const tree = this._super.treeForPublic.apply(this, arguments);
-    if(tree) {
-      trees.push(tree);
-    }
+  buildSvgTree: function() {
     let svgs = mergeTrees(this.svgPaths().filter(function(path) {
       return fs.existsSync(path);
     }));
 
     svgs = new Funnel(svgs, {
       include: [new RegExp(/\.svg$/)],
-      destDir: '/inline-svg'
+      destDir: '/'
     });
 
-    svgs = this.optimizeSVGs(svgs);
+    return this.optimizeSVGs(svgs);
+  },
 
+  treeForPublic: function() {
+    const trees = [];
+    const tree = this._super.treeForPublic.apply(this, arguments);
+    if(tree) {
+      trees.push(tree);
+    }
+    const svgs = this.buildSvgTree();
     trees.push(svgs);
+
     trees.push(flatiron(svgs, {
-      outputFile: 'inline-svg/resource.js',
+      outputFile: 'ember-inline-svg/resource.js',
       trimExtensions: true
     }));
 
     return mergeTrees(trees);
-  }
+  },
+
+  // treeForAddon: function() {
+  //   const trees = [];
+  //   const svgs = this.buildSvgTree();
+  //   const tree = this._super.treeForPublic.apply(this, arguments);
+  //   if(tree) {
+  //     trees.push(tree);
+  //   }
+  //   trees.push(flatiron(svgs, {
+  //     outputFile: 'svgs.js',
+  //     trimExtensions: true
+  //   }));
+  //   return mergeTrees(trees);
+  // }
 };

@@ -43,7 +43,6 @@
     "svg"
   ],
   "dependencies": {
-    "ember-ajax": "0.7.1",
     "ember-cli-htmlbars": "^1.0.1",
     "broccoli-caching-writer": "^0.5.5",
     "broccoli-flatiron": "0.0.0",

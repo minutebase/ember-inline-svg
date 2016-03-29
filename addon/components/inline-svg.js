@@ -1,11 +1,9 @@
 import Ember from 'ember';
-import layout from '../templates/components/svg';
-import SVGs from '../inline-svg/resource';
-const htmlSafe = Ember.String.htmlSafe;
+import Aria from '../mixins/aria';
+import Common from '../mixins/common';
+import SVGs from 'ember-inline-svg/resource';
 
-const inline = Ember.Component.extend({
-  layout: layout,
-  tagName: '',
+const inline = Ember.Component.extend(Aria, Common, {
   _svg: Ember.computed('src', function() {
     const src = this.get('src') || '';
     const path = src.replace(/\.svg$/, '').replace(/\//g, '.');
@@ -13,15 +11,8 @@ const inline = Ember.Component.extend({
 
     Ember.assert(`No SVG found for ${path}`, svg);
 
-    this.set('svg', htmlSafe(svg));
-    return htmlSafe(svg);
-  }),
-  labelledBy: Ember.computed('title', 'desc', function() {
-    const title = this.get('title') ? 'title' : '';
-    const desc = this.get('desc') ? ' desc' : '';
-    return `${title}${desc}`;
-  }),
-  role: 'img'
+    this.setSVG(svg);
+  })
 });
 
 inline.reopenClass({
