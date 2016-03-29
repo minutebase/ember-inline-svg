@@ -55,12 +55,12 @@ module.exports = {
       include: [new RegExp(/\.svg$/)],
       destDir: '/inline-svg'
     });
-    
+
     svgs = this.optimizeSVGs(svgs);
 
     trees.push(svgs);
     trees.push(flatiron(svgs, {
-      outputFile: 'svgs.js',
+      outputFile: 'inline-svg/resource.js',
       trimExtensions: true
     }));
 

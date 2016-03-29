@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/inline-svg';
-import SVGs from '/svgs';
+import SVGs from '../inline-svg/resource';
 const htmlSafe = Ember.String.htmlSafe;
 
 const inline = Ember.Component.extend({
