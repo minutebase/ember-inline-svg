@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/inline-svg';
-import SVGs from '../svgs';
+import SVGs from '/svgs';
 const htmlSafe = Ember.String.htmlSafe;
 
 const inline = Ember.Component.extend({
@@ -15,7 +15,7 @@ const inline = Ember.Component.extend({
 
     return htmlSafe(svg);
   }),
-  describedBy: Ember.computed('title', 'desc', function() {
+  labelledBy: Ember.computed('title', 'desc', function() {
     const title = this.get('title') ? 'title' : '';
     const desc = this.get('desc') ? ' desc' : '';
     return `${title}${desc}`;

@@ -10,14 +10,14 @@ var SVGOptmizer = require('./svg-optimizer');
 
 module.exports = {
   name: 'ember-inline-svg',
-  
+
   included: function(app) {
     if (app.app) {
       app = app.app;
     }
     this.app = app;
   },
-  
+
   options: function() {
     return merge(true, {}, {
       paths:   ['public'],
@@ -41,22 +41,29 @@ module.exports = {
     return new SVGOptmizer(tree, {svgoConfig: config});
   },
 
-  treeForApp: function(tree) {
-    var svgs = mergeTrees(this.svgPaths().filter(function(path) {
+  treeForPublic: function() {
+    const trees = [];
+    const tree = this._super.treeForPublic.apply(this, arguments);
+    if(tree) {
+      trees.push(tree);
+    }
+    let svgs = mergeTrees(this.svgPaths().filter(function(path) {
       return fs.existsSync(path);
     }));
 
     svgs = new Funnel(svgs, {
-      include: [new RegExp(/\.svg$/)]
+      include: [new RegExp(/\.svg$/)],
+      destDir: '/inline-svg'
     });
-
+    
     svgs = this.optimizeSVGs(svgs);
 
-    svgs = flatiron(svgs, {
+    trees.push(svgs);
+    trees.push(flatiron(svgs, {
       outputFile: 'svgs.js',
       trimExtensions: true
-    });
+    }));
 
-    return mergeTrees([tree, svgs]);
+    return mergeTrees(trees);
   }
 };
