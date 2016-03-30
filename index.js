@@ -2,6 +2,7 @@
 'use strict';
 
 var fs          = require('fs');
+var path        = require('path');
 var merge       = require('merge');
 var mergeTrees  = require('broccoli-merge-trees');
 var flatiron    = require('broccoli-flatiron');
@@ -43,45 +44,43 @@ module.exports = {
 
   buildSvgTree: function() {
     let svgs = mergeTrees(this.svgPaths().filter(function(path) {
-      return fs.existsSync(path);
+      return fs.statSync(path);
     }));
 
     svgs = new Funnel(svgs, {
-      include: [new RegExp(/\.svg$/)],
-      destDir: '/'
+      include: [new RegExp(/\.svg$/)]
     });
 
     return this.optimizeSVGs(svgs);
   },
 
-  treeForPublic: function() {
+  treeForPublic: function(tree) {
     const trees = [];
-    const tree = this._super.treeForPublic.apply(this, arguments);
+    const svgs = this.buildSvgTree();
+
     if(tree) {
       trees.push(tree);
     }
-    const svgs = this.buildSvgTree();
     trees.push(svgs);
-
-    trees.push(flatiron(svgs, {
-      outputFile: 'ember-inline-svg/resource.js',
-      trimExtensions: true
-    }));
 
     return mergeTrees(trees);
   },
 
-  // treeForAddon: function() {
+  // treeForVendor: function(tree) {
   //   const trees = [];
   //   const svgs = this.buildSvgTree();
-  //   const tree = this._super.treeForPublic.apply(this, arguments);
+  //   console.log('treeForVendor, cwd: ', path.dirname());
+  //
   //   if(tree) {
   //     trees.push(tree);
   //   }
+  //   // trees.push(svgs);
   //   trees.push(flatiron(svgs, {
   //     outputFile: 'svgs.js',
   //     trimExtensions: true
   //   }));
+  //
   //   return mergeTrees(trees);
-  // }
+  // },
+
 };

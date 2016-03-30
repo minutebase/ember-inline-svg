@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Aria from '../mixins/aria';
 import Common from '../mixins/common';
-import SVGs from 'ember-inline-svg/resource';
+import SVGs from 'svgs';
 
 const inline = Ember.Component.extend(Aria, Common, {
   _svg: Ember.computed('src', function() {

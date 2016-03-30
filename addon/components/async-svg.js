@@ -1,10 +1,10 @@
 import Ember from 'ember';
 import Aria from '../mixins/aria';
 import Common from '../mixins/common';
-const PREFIX = '/ember-inline-svg';
+const PREFIX = '';
 
 const async = Ember.Component.extend(Aria, Common, {
-  _svg: Ember.computed('src', function() {
+  _svg: Ember.observer('src', function() {
     const src = this.get('src').replace(/\.svg$/, '');
     Ember.$.ajax({
       method: 'GET',
