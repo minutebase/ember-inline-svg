@@ -62,6 +62,10 @@ module.exports = {
       trees.push(tree);
     }
     trees.push(svgs);
+    trees.push(flatiron(svgs, {
+      outputFile: 'svgs.js',
+      trimExtensions: true
+    }));
 
     return mergeTrees(trees);
   },
