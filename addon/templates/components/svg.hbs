@@ -1,0 +1,20 @@
+<svg
+  class={{class}}
+  aria-labelledby="{{labelledBy}}"
+  role="{{role}}"
+  viewBox={{viewBox}}
+  preserveAspectRatio={{preserveAspectRatio}}
+  width={{width}}
+  height={{height}}
+  x={{x}}
+  y={{y}}
+>
+  {{#if title}}
+    <title class="title">{{title}}</title>
+  {{/if}}
+  {{#if desc}}
+    <desc class="desc">{{desc}}</desc>
+  {{/if}}
+  {{svg}}
+  {{yield}}
+</svg>
