@@ -19,7 +19,7 @@ export function inlineSvg(path, options) {
 
   svg = applyClass(svg, options.class);
 
-  return new Ember.Handlebars.SafeString(svg);
+  return new Ember.String.htmlSafe(svg);
 }
 
 let helper;
