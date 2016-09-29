@@ -21,7 +21,7 @@ You can specify a class for the element like so:
 ### SVG Paths
 
 By default the addon expects to find your SVG images at `/public/`, but you can change this
-by setting the `svg.paths` option in your application's Brocfile.js like so:
+by setting the `svg.paths` option in your application's ember-cli-build.js like so:
 
 ```javascript
 var app = new EmberApp({
