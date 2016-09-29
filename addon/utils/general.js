@@ -1,7 +1,7 @@
 // converts slash paths to dot paths so nested hash values can be fetched with Ember.get
 // foo/bar/baz -> foo.bar.baz
 export function dottify(path) {
-  return (path || '').replace(/\//g, '.');
+  return (path || '').replace(/^\//g, '').replace(/\//g, '.');
 }
 
 // maybe this should be a component with tagName: 'svg' and strip the outer <svg> tag
