@@ -11,6 +11,10 @@ test('replaces slashes with dots', function(assert) {
   assert.equal(dottify("foo/bar/baz"), "foo.bar.baz");
 });
 
+test('removes leading slashes before replacing slashes with dots', function(assert) {
+  assert.equal(dottify("/foo/bar/baz"), "foo.bar.baz");
+});
+
 module('utils: applyClass');
 
 test('adds class to svg element', function(assert) {
