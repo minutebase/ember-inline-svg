@@ -10,5 +10,12 @@ export function applyClass(svg, klass) {
   if (!klass) { return svg; }
 
   // now we have 2 problems...
+  const regex = /(<svg.*)( class=['"]([^'"]+))['"](.*>)/;
+  const matches = svg.match(regex);
+
+  if (matches) {
+    return matches[1] + ' class="' + klass + ' ' + matches[3] + '"' + matches[4];
+  }
+
   return svg.replace('<svg', '<svg class="'+klass+'"');
 }
