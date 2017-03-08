@@ -9,11 +9,11 @@ export function dottify(path) {
 export function applyOptions(svg, options) {
   if (!options) { return svg; }
 
-  optString = "";
-  for(option in options) {
+  let optString = "";
+  for(let option in options) {
     optString += ` ${option}="${options[option]}"`;
   }
 
   // now we have 2 problems...
-  return svg.replace('<svg', '<svg'+optString);
+  return svg.replace('<svg', '<svg'+Ember.String.htmlSafe(optString));
 }
