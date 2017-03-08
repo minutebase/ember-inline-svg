@@ -6,6 +6,7 @@ import {
 } from 'ember-inline-svg/utils/general';
 
 export function inlineSvg(path, options) {
+  if(!path) { return null; }
   var jsonPath = dottify(path);
   var svg = Ember.get(SVGs, jsonPath);
 
