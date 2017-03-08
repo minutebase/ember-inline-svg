@@ -11,7 +11,9 @@ export function applyOptions(svg, options) {
 
   let optString = "";
   for(let option in options) {
-    optString += ` ${option}="${options[option]}"`;
+    if(options[option]) {
+      optString += ` ${option}="${options[option]}"`;
+    }
   }
 
   // now we have 2 problems...
