@@ -129,6 +129,7 @@ This happens, when you try to inline a non-exisent or wrongly addressed `.svg` f
 5. If you fiddled around with the [`svg.paths` option](#svg-paths), check the following:
   - The `.svg` file you're trying to inline is a direct or indirect child of any of the directories listed in `svg.paths`.
   - If the filename is something like `/public/images/foo/bar.svg` and your `svg.paths` option is set to something like `['public/images']`, you have to address the image with `foo/bar.svg`, instead of the default `images/foo/bar.svg`.
+6. If you are using ember-cli's built in asset fingerprinting, make sure you exclude any of the svg's you have inlined with this library.
 
 ## Developing
 
