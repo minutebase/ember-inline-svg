@@ -38,7 +38,7 @@ module.exports = {
       return tree;
     }
 
-    return new SVGOptmizer(tree, {svgoConfig: config});
+    return new SVGOptmizer([tree], {svgoConfig: config});
   },
 
   treeForApp: function(tree) {
