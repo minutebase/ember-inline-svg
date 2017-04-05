@@ -44,3 +44,11 @@ test('trims unnecessary .svg` extension', function(assert) {
     assert.ok(find(".kiwi-image-with-extension svg").length, "has an SVG, extension was trimmed");
   });
 });
+
+test('runs through SVGO', function(assert) {
+  visit('/root');
+
+  andThen(function() {
+    assert.ok(!find(".kiwi-image-at-root svg title").length, "has stripped the title");
+  });
+});

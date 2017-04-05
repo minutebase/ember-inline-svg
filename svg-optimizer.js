@@ -14,6 +14,7 @@ SVGOptimizer.prototype = Object.create(Plugin.prototype);
 SVGOptimizer.prototype.constructor = SVGOptimizer;
 function SVGOptimizer(inputNodes, options) {
   options = options || {};
+  this.svgoConfig = options.svgoConfig;
   Plugin.call(this, inputNodes, {
     annotation: options.annotation,
     cacheInclude: [/\.svg/]
