@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 import {
   dottify,
-  applyClass
+  applyOptions
 } from 'ember-inline-svg/utils/general';
 
 export function inlineSvg(svgs, path, options) {
@@ -17,7 +17,7 @@ export function inlineSvg(svgs, path, options) {
 
   Ember.assert("No SVG found for "+path, svg);
 
-  svg = applyClass(svg, options.class);
+  svg = applyOptions(svg, options);
 
   return Ember.String.htmlSafe(svg);
 }
