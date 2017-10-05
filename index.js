@@ -38,25 +38,31 @@ module.exports = {
       return tree;
     }
 
-    return new SVGOptmizer(tree, {svgoConfig: config});
+    return new SVGOptmizer([tree], {svgoConfig: config});
   },
 
   treeForApp: function(tree) {
-    var svgs = mergeTrees(this.svgPaths().filter(function(path) {
+    var existingPaths = this.svgPaths().filter(function(path) {
       return fs.existsSync(path);
-    }));
-
-    svgs = new Funnel(svgs, {
-      include: [new RegExp(/\.svg$/)]
     });
 
-    svgs = this.optimizeSVGs(svgs);
+    var svgTrees = existingPaths.map(function(path) {
+      return new Funnel(path, {
+        include: [new RegExp(/\.svg$/)]
+      });
+    });
 
-    svgs = flatiron(svgs, {
+    var svgs = mergeTrees(svgTrees, {
+      overwrite: true
+    });
+
+    var optimized = this.optimizeSVGs(svgs);
+
+    var manifest = flatiron(optimized, {
       outputFile: 'svgs.js',
       trimExtensions: true
     });
 
-    return mergeTrees([tree, svgs]);
+    return mergeTrees([tree, manifest]);
   }
 };
