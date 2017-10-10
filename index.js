@@ -40,29 +40,30 @@ module.exports = {
 
     return new SVGOptmizer([tree], {svgoConfig: config});
   },
-
-  treeForApp: function(tree) {
+  
+  treeForPublic: function(tree) {
     var existingPaths = this.svgPaths().filter(function(path) {
       return fs.existsSync(path);
     });
-
+  
     var svgTrees = existingPaths.map(function(path) {
       return new Funnel(path, {
         include: [new RegExp(/\.svg$/)]
       });
     });
-
+  
     var svgs = mergeTrees(svgTrees, {
       overwrite: true
     });
-
+  
     var optimized = this.optimizeSVGs(svgs);
-
+  
     var manifest = flatiron(optimized, {
-      outputFile: 'svgs.js',
-      trimExtensions: true
+      outputFile: 'assets/svgs.js',
+      trimExtensions: true,
+      prefix: 'APP_SVGs = '
     });
-
-    return mergeTrees([tree, manifest]);
+  
+    return manifest;
   }
 };
