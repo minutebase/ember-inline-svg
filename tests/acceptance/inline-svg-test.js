@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import {module, test} from 'qunit';
+import { run } from '@ember/runloop';
+import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
 var App;
@@ -9,7 +9,7 @@ module('Acceptance: InlineSvg', {
     App = startApp();
   },
   afterEach: function() {
-    Ember.run(App, 'destroy');
+    run(App, 'destroy');
   }
 });
 

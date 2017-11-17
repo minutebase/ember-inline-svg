@@ -3,7 +3,7 @@ import {
   applyClass
 } from 'ember-inline-svg/utils/general';
 
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('utils: dottify');
 
