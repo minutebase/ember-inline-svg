@@ -2,6 +2,11 @@
 
 Displays SVG images inline.
 
+## Installation
+```bash
+ember install ember-inline-svg
+```
+
 ## Usage
 
 ```handlebars
