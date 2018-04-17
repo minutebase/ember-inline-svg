@@ -141,7 +141,6 @@ This happens, when you try to inline a non-exisent or wrongly addressed `.svg` f
 
 * `git clone` this repository
 * `npm install`
-* `bower install`
 
 ### Running
 
@@ -157,4 +156,4 @@ This happens, when you try to inline a non-exisent or wrongly addressed `.svg` f
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
