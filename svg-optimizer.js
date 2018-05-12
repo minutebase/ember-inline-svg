@@ -1,4 +1,4 @@
-/* jshint node: true */
+'use strict';
 
 var Plugin        = require('broccoli-caching-writer');
 var mapSeries     = require('promise-map-series');
