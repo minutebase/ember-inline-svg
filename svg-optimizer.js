@@ -1,4 +1,5 @@
 'use strict';
+/* global require module */
 
 var Plugin        = require('broccoli-caching-writer');
 var mapSeries     = require('promise-map-series');
