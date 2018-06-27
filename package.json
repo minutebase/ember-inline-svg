@@ -46,7 +46,7 @@
   ],
   "dependencies": {
     "broccoli-caching-writer": "^3.0.3",
-    "broccoli-flatiron": "0.0.0",
+    "broccoli-flatiron": "^0.1.2",
     "broccoli-funnel": "^1.0.1",
     "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^5.1.6",
