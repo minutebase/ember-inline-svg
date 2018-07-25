@@ -135,26 +135,33 @@ This happens, when you try to inline a non-exisent or wrongly addressed `.svg` f
   - The `.svg` file you're trying to inline is a direct or indirect child of any of the directories listed in `svg.paths`.
   - If the filename is something like `/public/images/foo/bar.svg` and your `svg.paths` option is set to something like `['public/images']`, you have to address the image with `foo/bar.svg`, instead of the default `images/foo/bar.svg`.
 
-## Developing
+## Contributing
 
 ### Installation
 
 * `git clone` this repository
+* `cd ember-inline-svg`
 * `npm install`
-* `bower install`
 
-### Running
+### Linting
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
 
-### Running Tests
+### Running tests
 
-* `ember test`
-* `ember test --server`
+* `ember test` – Runs the test suite on the current Ember version
+* `ember test --server` – Runs the test suite in "watch mode"
+* `ember try:each` – Runs the test suite against multiple Ember versions
 
-### Building
+### Running the dummy application
 
-* `ember build`
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
