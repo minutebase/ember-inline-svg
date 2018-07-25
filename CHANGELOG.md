@@ -2,6 +2,45 @@
 
 ## Master
 
+## v0.1.12
+
+* Update Ember CLI to ~3.3.0 (thanks @lozjackson & @raido)
+* Update flatiron to ^0.1.2 (thanks @raido)
+* Update svgo (thanks @lozjackson)
+* Use yarn.lock vs package-json.lock
+* Use new ember modules (thanks @lozjackson)
+
+## v0.1.11
+
+* Filter SVGs before merging and allow duplicates when merging SVG dirs
+
+## v0.1.10
+
+* Fix SVGO options not being passed through
+
+## v0.1.9
+
+* Move helper to addon branch so it can be imported and overridden
+
+## v0.1.8
+
+* Update dependencies to latest versions and turn into plugin (thanks @vitch)
+
+## v0.1.7
+
+* ember-cli 2.8 (thanks @Dhaulagiri)
+* remove any leading slashes from paths before dottify-ing (thanks @Dhaulagiri)
+
+## v0.1.6
+
+* use `Ember.String.htmlSafe` to remove warning (thanks @GavinJoyce)
+* updated to ember-cli@1.13.14 (thanks @ksnyde)
+* Dont need to call included first to be able to introspect options (thanks @john-kurkowski)
+
+## v0.1.5
+
+* Nested Addon Usage (thanks @onlymejosh)
+
 ## v0.1.4
 
 * Support latest Ember without deprecations
