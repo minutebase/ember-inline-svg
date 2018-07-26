@@ -2,6 +2,10 @@
 
 ## Master
 
+## v0.2.1
+
+* Fix `htmlSafe` import path from `@ember/template` -> `@ember/string`
+
 ## v0.2.0
 
 * Update SVGO to ~1.0.5
