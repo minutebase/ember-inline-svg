@@ -1,4 +1,4 @@
-import { htmlSafe } from '@ember/template';
+import { htmlSafe } from '@ember/string';
 import { assert } from '@ember/debug';
 import { get } from '@ember/object';
 
