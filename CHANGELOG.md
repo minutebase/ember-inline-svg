@@ -2,6 +2,11 @@
 
 ## Master
 
+## v0.2.0
+
+* Update SVGO to ~1.0.5
+* Update broccoli-flatiron to ~0.1.3 - no more deprecation warnings
+
 ## v0.1.12
 
 * Update Ember CLI to ~3.3.0 (thanks @lozjackson & @raido)
