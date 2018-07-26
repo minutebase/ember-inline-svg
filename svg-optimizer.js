@@ -7,7 +7,6 @@ var walkSync      = require('walk-sync');
 var mkdirp        = require('mkdirp');
 var path          = require('path');
 var SVGO          = require('svgo');
-var RSVP          = require('rsvp');
 var fs            = require('fs');
 
 
@@ -40,17 +39,8 @@ SVGOptimizer.prototype.build = function() {
         var destPath = path.join(destDir, relativePath);
         var rawSVG   = fs.readFileSync(srcPath, { encoding: 'utf8' });
 
-        return new RSVP.Promise(function(resolve, reject) {
-          svgo.optimize(rawSVG, function(result) {
-            if (result.error) {
-              var error = new Error(result.error);
-              error.file = relativePath;
-              return reject(error);
-            }
-
-            fs.writeFileSync(destPath, result.data, { encoding: 'utf8'});
-            resolve();
-          });
+        return svgo.optimize(rawSVG).then(function(result) {
+          fs.writeFileSync(destPath, result.data, { encoding: 'utf8' });
         });
       }
     });
