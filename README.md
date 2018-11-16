@@ -145,6 +145,7 @@ This happens, when you try to inline a non-exisent or wrongly addressed `.svg` f
 
 ### Linting
 
+* `npm run lint:hbs`
 * `npm run lint:js`
 * `npm run lint:js -- --fix`
 
