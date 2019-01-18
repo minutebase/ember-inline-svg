@@ -12,3 +12,14 @@ export function applyClass(svg, klass) {
   // now we have 2 problems...
   return svg.replace('<svg', '<svg class="'+klass+'"');
 }
+
+// add/update title to svg
+export function applyTitle(svg, title) {
+  if (!title) { return svg; }
+
+  if (svg.includes('title')) {
+    return svg.replace(/<title>(.*?)<\/title>/gm, `<title>${title}</title>`);
+  } else {
+    return svg.replace('</svg>', `<title>${title}</title></svg>`);
+  }
+}
