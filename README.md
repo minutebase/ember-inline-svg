@@ -66,7 +66,8 @@ var app = new EmberApp({
 });
 ```
 
-Alternatively, you can disable it completely by setting this to false:
+Please bear in mind that but default we are stripping `title` from any svg with `removeTitle: true`, you can
+disable it with `removeTitle: false` or alternatively, you can disable every optimization  by doing:
 
 ```javascript
 var app = new EmberApp({
