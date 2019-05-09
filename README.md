@@ -1,5 +1,7 @@
 # ember-inline-svg
 
+[![Build Status](https://travis-ci.org/minutebase/ember-inline-svg.svg?branch=master)](https://travis-ci.org/minutebase/ember-inline-svg)
+
 Displays SVG images inline.
 
 ## Installation
