@@ -8,7 +8,7 @@ var Funnel      = require('broccoli-funnel');
 var SVGOptmizer = require('./svg-optimizer');
 
 module.exports = {
-  name: 'ember-inline-svg',
+  name: require('./package').name,
 
   included: function(app) {
     if (app.app) {
