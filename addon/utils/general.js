@@ -17,7 +17,7 @@ export function applyClass(svg, klass) {
 export function applyTitle(svg, title) {
   if (!title) { return svg; }
 
-  if (svg.includes('<title>')) {
+  if (svg.indexOf('<title>') !== -1) {
     return svg.replace(/<title>(.*?)<\/title>/gm, `<title>${title}</title>`);
   } else {
     return svg.replace('</svg>', `<title>${title}</title></svg>`);
