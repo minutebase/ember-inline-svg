@@ -1,6 +1,14 @@
 # CHANGELOG
 
-## Master
+## v0.3.0
+
+### Added
+
+* #60 Add `title` support to SVGs (thanks @Willibaur)
+
+### Security
+
+* #63 Upgrade `js-yaml` (thanks @nhemanth007)
 
 ## v0.2.1
 
