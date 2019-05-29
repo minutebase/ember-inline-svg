@@ -30,7 +30,7 @@
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^3.0.0",
     "ember-cli-babel": "^6.16.0",
-    "merge": "^1.2.0",
+    "merge": "^1.2.1",
     "mkdirp": "^0.5.1",
     "promise-map-series": "^0.2.1",
     "svgo": "~1.2.2",

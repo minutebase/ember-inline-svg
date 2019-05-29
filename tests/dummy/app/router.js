@@ -11,6 +11,7 @@ Router.map(function() {
   this.route("subdirectory");
   this.route("class");
   this.route("extension");
+  this.route("title");
 });
 
 export default Router;

@@ -23,6 +23,11 @@ module('Acceptance | inline-svg', function(hooks) {
     assert.dom(".kiwi-image-with-a-class svg.with-a-class").exists("has added the class");
   });
 
+  test('adds/update title to SVG', async function (assert) {
+    await visit('/title');
+    assert.equal(find("title").textContent, "with-a-title", "has added title");
+  });
+
   test('trims unnecessary .svg` extension', async function(assert) {
     await visit('/extension');
 

@@ -4,7 +4,8 @@ import { get } from '@ember/object';
 
 import {
   dottify,
-  applyClass
+  applyClass,
+  applyTitle
 } from 'ember-inline-svg/utils/general';
 
 export function inlineSvg(svgs, path, options) {
@@ -20,6 +21,7 @@ export function inlineSvg(svgs, path, options) {
   assert("No SVG found for "+path, svg);
 
   svg = applyClass(svg, options.class);
+  svg = applyTitle(svg, options.title)
 
   return htmlSafe(svg);
 }
