@@ -4,18 +4,9 @@ import { get } from '@ember/object';
 import {
   dottify,
   applyClass,
-  applyTitle
+  applyTitle,
+  assert
 } from 'ember-inline-svg/utils/general';
-
-// old IE manual polyfill
-const { assert: nativeAssert, error, log } = console;
-const logError = error || log;
-
-const assert = nativeAssert || function(condition, message) {
-  if (!condition) {
-    logError(message);
-  }
-}
 
 export function inlineSvg(svgs, path, options) {
   var jsonPath = dottify(path);

@@ -23,3 +23,15 @@ export function applyTitle(svg = '', title) {
     return svg.replace('</svg>', `<title>${title}</title></svg>`);
   }
 }
+
+// old IE manual polyfill
+const { assert: nativeAssert, error } = console;
+
+// The following is a non-throwing assert
+// It will show a red error message in the console but will not stop the rest
+// of the application to render properly
+export const assert = nativeAssert || function(condition, message) {
+  if (!condition) {
+    error(message);
+  }
+}
