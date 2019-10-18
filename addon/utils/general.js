@@ -24,7 +24,8 @@ export function applyTitle(svg = '', title) {
   }
 }
 
-// old IE manual polyfill
+// manual polyfill:
+// => `assert` is not supported on old IE and safari iOS
 const { assert: nativeAssert, error } = console;
 
 // The following is a non-throwing assert
