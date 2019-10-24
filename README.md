@@ -33,8 +33,8 @@ You can specify a class for the element like so:
 Also, you can add/update `<title></title>` by doing:
 
 ```handlebars
-{{inline-svg 'mySVG' title="myTitle'}}
-{{inline-svg 'mySVG' class="myClass" title="myTitle'}}
+{{inline-svg 'mySVG' title="myTitle"}}
+{{inline-svg 'mySVG' class="myClass" title="myTitle"}}
 ```
 
 ## Configuring
