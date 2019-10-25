@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v1.0.0
+
+### BREAKING
+
+* Drop Node < 8 support
+* Drop Babel 6
+
+### Internal
+
+* Ember.js v3.13.x upgrade
+
 ## v0.3.0
 
 ### Added
