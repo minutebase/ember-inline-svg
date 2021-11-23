@@ -1,6 +1,6 @@
 # ember-inline-svg
 
-[![Build Status](https://travis-ci.org/minutebase/ember-inline-svg.svg?branch=master)](https://travis-ci.org/minutebase/ember-inline-svg)
+[![CI](https://github.com/minutebase/ember-inline-svg/actions/workflows/ci.yml/badge.svg)](https://github.com/minutebase/ember-inline-svg/actions/workflows/ci.yml)
 
 Displays SVG images inline.
 
