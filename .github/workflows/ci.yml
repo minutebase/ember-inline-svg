@@ -19,9 +19,7 @@ jobs:
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
     - name: Lint
-      run: |
-          yarn lint:js
-          yarn lint:hbs
+      run: yarn lint
 
   test:
     name: Tests
@@ -33,7 +31,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         browser: [chrome, firefox]
-        node: ["8", "10"]
+        node: ["12", "14", "16"]
 
     steps:
     - uses: actions/checkout@v2
@@ -45,10 +43,9 @@ jobs:
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
     - name: Test
-      run: yarn test --launch ${{ matrix.browser }}
+      run: yarn test:ember --launch ${{ matrix.browser }}
 
   floating-dependencies:
-    if: false # disable for now, there's no way we can get these green on Node 8
     name: Floating Dependencies
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
@@ -67,7 +64,7 @@ jobs:
     - name: Install Dependencies
       run: yarn install --no-lockfile --non-interactive
     - name: Test
-      run: yarn test --launch ${{ matrix.browser }}
+      run: yarn test:ember --launch ${{ matrix.browser }}
 
   try-scenarios:
     name: Tests - ${{ matrix.ember-try-scenario }}
@@ -80,16 +77,19 @@ jobs:
       fail-fast: true
       matrix:
         ember-try-scenario: [
-          ember-lts-3.4,
-          ember-lts-3.8,
-          #ember-release, # we are too far behind for these to pass
-          #ember-beta,
-          ember-default-with-jquery
+          ember-lts-3.20,
+          ember-lts-3.24,
+          ember-release,
+          ember-beta,
+          ember-default-with-jquery,
+          ember-classic,
+          embroider-safe,
+          embroider-optimized
         ]
         allow-failure: [false]
-        #include:
-        #  - ember-try-scenario: ember-canary
-        #    allow-failure: true
+        include:
+          - ember-try-scenario: ember-canary
+            allow-failure: true
 
     steps:
     - uses: actions/checkout@v2
