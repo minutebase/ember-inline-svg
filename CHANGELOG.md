@@ -1,5 +1,9 @@
 # CHANGELOG
 
+
+## v1.0.1
+
+* Fix `htmlSafe` import deprecation and failure on Ember.js v3.27+
 ## v1.0.0
 
 ### BREAKING
