@@ -5,7 +5,7 @@ import { get } from '@ember/object';
 import {
   dottify,
   applyClass,
-  applyTitle
+  applyTitle,
 } from 'ember-inline-svg/utils/general';
 
 export function inlineSvg(svgs, path, options) {
@@ -14,14 +14,14 @@ export function inlineSvg(svgs, path, options) {
 
   // TODO: Ember.get should return `null`, not `undefined`.
   // if (svg === null && /\.svg$/.test(path))
-  if (typeof svg === "undefined" && /\.svg$/.test(path)) {
+  if (typeof svg === 'undefined' && /\.svg$/.test(path)) {
     svg = get(svgs, jsonPath.slice(0, -4));
   }
 
-  assert("No SVG found for "+path, svg);
+  assert('No SVG found for ' + path, svg);
 
   svg = applyClass(svg, options.class);
-  svg = applyTitle(svg, options.title)
+  svg = applyTitle(svg, options.title);
 
   return htmlSafe(svg);
 }

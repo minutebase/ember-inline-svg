@@ -5,11 +5,11 @@ import Ember from 'ember';
 
 let helper;
 if (Helper && buildHelper) {
-  helper = buildHelper(function([path], options) {
+  helper = buildHelper(function ([path], options) {
     return inlineSvg(SVGs, path, options);
   });
 } else {
-  helper = Ember.Handlebars.makeBoundHelper(function(path, options) {
+  helper = Ember.Handlebars.makeBoundHelper(function (path, options) {
     return inlineSvg(SVGs, path, options.hash || {});
   });
 }
