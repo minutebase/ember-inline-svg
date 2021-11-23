@@ -10,14 +10,14 @@ var SVGOptmizer = require('./svg-optimizer');
 module.exports = {
   name: require('./package').name,
 
-  included: function (app) {
+  included(app) {
     if (app.app) {
       app = app.app;
     }
     this.app = app;
   },
 
-  options: function () {
+  options() {
     return merge(
       true,
       {},
@@ -31,14 +31,14 @@ module.exports = {
     );
   },
 
-  svgPaths: function () {
+  svgPaths() {
     if (this.isDevelopingAddon()) {
       return ['tests/dummy/public'];
     }
     return this.options().paths;
   },
 
-  optimizeSVGs: function (tree) {
+  optimizeSVGs(tree) {
     var config = this.options().optimize;
     if (!config) {
       return tree;
@@ -47,7 +47,7 @@ module.exports = {
     return new SVGOptmizer([tree], { svgoConfig: config });
   },
 
-  treeForApp: function (tree) {
+  treeForApp(tree) {
     var existingPaths = this.svgPaths().filter(function (path) {
       return fs.existsSync(path);
     });
