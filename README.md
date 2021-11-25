@@ -45,7 +45,7 @@ By default the addon expects to find your SVG images at `/public/`, but you can 
 by setting the `svg.paths` option in your application's ember-cli-build.js like so:
 
 ```javascript
-var app = new EmberApp({
+let app = new EmberApp({
   svg: {
     paths: [
       'public/images',
@@ -62,16 +62,23 @@ SVGs are optimized by [svgo](https://github.com/svg/svgo) by default.
 You can configure this by setting the `svg.optimize` options:
 
 ```javascript
-var app = new EmberApp({
+let app = new EmberApp({
   svg: {
     optimize: {
-      plugins: [
-        { removeDoctype: false },
-        { removeTitle: true },
-        { removeDesc: true }
-      ]
-    }
-  }
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeDoctype: false,
+                removeTitle: false
+              },
+            },
+          },
+        ],
+      },
+    },
+  },
 });
 ```
 
@@ -79,9 +86,11 @@ Please bear in mind that but default we are stripping `title` from any svg with 
 disable it with `removeTitle: false` or alternatively, you can disable every optimization  by doing:
 
 ```javascript
-var app = new EmberApp({
+let app = new EmberApp({
   svg: {
-    optimize: false
+    optimize: {
+      plugins: []
+    }
   }
 });
 ```
@@ -95,20 +104,19 @@ See [SVGO's plugins](https://github.com/svg/svgo/tree/master/plugins) for exampl
 Eg, here's how you could strip IDs from all elements:
 
 ```javascript
-var app = new EmberApp({
+let app = new EmberApp({
   svg: {
     optimize: {
       plugins: [
         {
-          myCustomPlugin: {
-            type: "perItem",
-            fn: function(item) {
-              item.eachAttr(function(attr) {
-                if (attr.name === 'id') {
-                  item.removeAttr('id')
-                }
-              });
-            }
+          name: "myCustomPlugin",
+          type: "perItem",
+          fn: function(item) {
+            item.eachAttr(function(attr) {
+              if (attr.name === 'id') {
+                item.removeAttr('id')
+              }
+            });
           }
         }
       ]

@@ -40,6 +40,7 @@ module.exports = {
 
   optimizeSVGs(tree) {
     var config = this.options().optimize;
+    // TODO throw deprecation warning
     if (!config) {
       return tree;
     }

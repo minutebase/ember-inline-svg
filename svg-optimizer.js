@@ -6,7 +6,7 @@ var mapSeries = require('promise-map-series');
 var walkSync = require('walk-sync');
 var mkdirp = require('mkdirp');
 var path = require('path');
-var SVGO = require('svgo');
+const { optimize } = require('svgo');
 var fs = require('fs');
 
 SVGOptimizer.prototype = Object.create(Plugin.prototype);
@@ -21,8 +21,8 @@ function SVGOptimizer(inputNodes, options) {
 }
 
 SVGOptimizer.prototype.build = function () {
-  var svgo = new SVGO(this.svgoConfig);
   var destDir = this.outputPath;
+  const svgoConfig = this.svgoConfig;
 
   return mapSeries(this.inputPaths, function (srcDir) {
     var paths = walkSync(srcDir);
@@ -38,9 +38,8 @@ SVGOptimizer.prototype.build = function () {
         var destPath = path.join(destDir, relativePath);
         var rawSVG = fs.readFileSync(srcPath, { encoding: 'utf8' });
 
-        return svgo.optimize(rawSVG).then(function (result) {
-          fs.writeFileSync(destPath, result.data, { encoding: 'utf8' });
-        });
+        const result = optimize(rawSVG, svgoConfig);
+        fs.writeFileSync(destPath, result.data, { encoding: 'utf8' });
       }
     });
   });
