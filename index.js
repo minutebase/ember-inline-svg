@@ -39,10 +39,14 @@ module.exports = {
   },
 
   optimizeSVGs(tree) {
-    const config = this.options().optimize;
-    // TODO throw deprecation warning
-    if (!config) {
-      return tree;
+    let config = this.options().optimize;
+    if (config === false) {
+      this.ui.writeDeprecateLine(
+        'Setting "optimize: false" is deprecated. Use { optimize: plugins: [] } to disable default SVGO optimizations.'
+      );
+      config = {
+        plugins: [],
+      };
     }
 
     return new SVGOptmizer([tree], { svgoConfig: config });
