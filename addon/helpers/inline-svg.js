@@ -9,8 +9,8 @@ import {
 } from 'ember-inline-svg/utils/general';
 
 export function inlineSvg(svgs, path, options) {
-  var jsonPath = dottify(path);
-  var svg = get(svgs, jsonPath);
+  const jsonPath = dottify(path);
+  let svg = get(svgs, jsonPath);
 
   // TODO: Ember.get should return `null`, not `undefined`.
   // if (svg === null && /\.svg$/.test(path))
