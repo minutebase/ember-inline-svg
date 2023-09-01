@@ -74,7 +74,7 @@ jobs:
     needs: test
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         ember-try-scenario: [
           ember-lts-3.20,
@@ -96,6 +96,8 @@ jobs:
       with:
         fetch-depth: 1
     - uses: volta-cli/action@v1
+      with:
+        node-version: 16
     - name: Install Dependencies
       run: yarn install --frozen-lockfile
     - name: Test
