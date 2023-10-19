@@ -1,11 +1,11 @@
 'use strict';
 
-var fs = require('fs');
-var merge = require('merge');
-var mergeTrees = require('broccoli-merge-trees');
-var flatiron = require('broccoli-flatiron');
-var Funnel = require('broccoli-funnel');
-var SVGOptmizer = require('./svg-optimizer');
+const fs = require('fs');
+const merge = require('merge');
+const mergeTrees = require('broccoli-merge-trees');
+const flatiron = require('broccoli-flatiron');
+const Funnel = require('broccoli-funnel');
+const SVGOptmizer = require('./svg-optimizer');
 
 module.exports = {
   name: require('./package').name,
@@ -39,32 +39,37 @@ module.exports = {
   },
 
   optimizeSVGs(tree) {
-    var config = this.options().optimize;
-    if (!config) {
-      return tree;
+    let config = this.options().optimize;
+    if (config === false) {
+      this.ui.writeDeprecateLine(
+        'Setting "optimize: false" is deprecated. Use { optimize: plugins: [] } to disable default SVGO optimizations.'
+      );
+      config = {
+        plugins: [],
+      };
     }
 
     return new SVGOptmizer([tree], { svgoConfig: config });
   },
 
   treeForApp(tree) {
-    var existingPaths = this.svgPaths().filter(function (path) {
+    const existingPaths = this.svgPaths().filter(function (path) {
       return fs.existsSync(path);
     });
 
-    var svgTrees = existingPaths.map(function (path) {
+    const svgTrees = existingPaths.map(function (path) {
       return new Funnel(path, {
         include: [new RegExp(/\.svg$/)],
       });
     });
 
-    var svgs = mergeTrees(svgTrees, {
+    const svgs = mergeTrees(svgTrees, {
       overwrite: true,
     });
 
-    var optimized = this.optimizeSVGs(svgs);
+    const optimized = this.optimizeSVGs(svgs);
 
-    var manifest = flatiron(optimized, {
+    const manifest = flatiron(optimized, {
       outputFile: 'svgs.js',
       trimExtensions: true,
     });

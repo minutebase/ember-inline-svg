@@ -38,7 +38,7 @@
     "merge": "^2.1.1",
     "mkdirp": "~1.0.4",
     "promise-map-series": "~0.3.0",
-    "svgo": "~1.2.2",
+    "svgo": "~2.8.0",
     "walk-sync": "~3.0.0"
   },
   "devDependencies": {

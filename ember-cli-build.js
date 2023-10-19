@@ -6,7 +6,14 @@ module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     svg: {
       optimize: {
-        plugins: [{ removeTitle: true }],
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {},
+            },
+          },
+        ],
       },
     },
   });
